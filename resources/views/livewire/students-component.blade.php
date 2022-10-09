@@ -26,18 +26,56 @@
                         </button>
                 </div>
                 <div class="modal-body">
-                    Body
-                </div>
-                <div class="modal-footer">
                     <form>
                         <div class="form-group row">
                             <label for="student_id" class="col-3">Student ID</label>
                             <div class="col-9">
                                 <input type="number" id="student_id" class="form-control" wire:model="student_id">
+                                @error('student_id')
+                                    <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-3">Name</label>
+                                <div class="col-9">
+                                    <input type="number" id="name" class="form-control" wire:model="name">
+                                    @error('name')
+                                        <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-3">Email</label>
+                                <div class="col-9">
+                                    <input type="number" id="email" class="form-control" wire:model="email">
+                                    @error('email')
+                                        <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="phone" class="col-3">Phone</label>
+                                <div class="col-9">
+                                    <input type="number" id="phone" class="form-control" wire:model="phone">
+                                    @error('phone')
+                                        <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-3"></label>
+                                <div class="col-9">
+                                    <button type="submit" class="btn btn-sm btn-primary">Add Student</button>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
+               
             </div>
         </div>
     </div>
