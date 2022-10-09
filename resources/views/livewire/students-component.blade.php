@@ -8,7 +8,36 @@
                         <button class="btn btn-sm btn-primary" Style="float: right;" data-toggle="modal" data-target="#addStudentModal">Add New Student</button>
                     </div>
                     <div class="card-body">
+                        @if(session()->has('message'))
+                            <div class="alert alert-success text-center">{{ session('message') }}</div>
+                        @endif
 
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($students->count() > 0)
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>{{ $student->student_id }}</td>
+                                            <td>{{ $student->name }}</td>
+                                            <td>{{ $student->email }}</td>
+                                            <td>{{ $student->phone }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="4" style="text-align: center;"><small>No Student Found</small></td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -39,7 +68,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-3">Name</label>
                                 <div class="col-9">
-                                    <input type="number" id="name" class="form-control" wire:model="name">
+                                    <input type="text" id="name" class="form-control" wire:model="name">
                                     @error('name')
                                         <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                                     @enderror
@@ -81,5 +110,12 @@
     </div>
 </div>
 
+@push('scripts')
+    <script>
+        window.addEventListener('close-modal', event =>{
+            $('#addStudentModal').modal('hide');
+        });
+    </script>
+@endpush
 {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save</button> --}}
