@@ -16,7 +16,7 @@
     </div>    
     
     <!-- Modal -->
-    <div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -26,7 +26,7 @@
                         </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form wire:submit.prevent="storeStudentData">
                         <div class="form-group row">
                             <label for="student_id" class="col-3">Student ID</label>
                             <div class="col-9">
@@ -49,7 +49,7 @@
                             <div class="form-group row">
                                 <label for="email" class="col-3">Email</label>
                                 <div class="col-9">
-                                    <input type="number" id="email" class="form-control" wire:model="email">
+                                    <input type="email" id="email" class="form-control" wire:model="email">
                                     @error('email')
                                         <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                                     @enderror

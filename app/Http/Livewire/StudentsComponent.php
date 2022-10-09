@@ -7,7 +7,18 @@ use Livewire\Component;
 class StudentsComponent extends Component
 {
 
-    public $student_id;
+    public $student_id, $name, $email, $phone;
+
+    //input fields on update validation
+    public function update($fields)
+    {
+        $this->validateOnly($fields, [
+          'student_id'  => 'required|unique:students', //students = table name
+          'name'        => 'required',
+          'email'       => 'required|email',
+          'phone'       => 'required|numeric',  
+        ]);
+    }
 
     public function storeStudentData()
     {
